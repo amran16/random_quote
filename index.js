@@ -1,17 +1,27 @@
 var result = function(){
     $.ajax({
-      url: 'https://crossorigin.me/http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en',
+      url: 'https://api.forismatic.com/api/1.0/?',
+      jsonp: 'jsonp',
+      dataType: 'jsonp',
+      data: {
+        method: 'getQuote',
+        lang:'en',
+        format:'jsonp'
+      },
       success: function(data){
+
         quote = data.quoteText;
         author = data.quoteAuthor;
+
         document.querySelector("#quote").innerHTML = ('"' + quote + '"');
         if(author){
           document.querySelector("#author").innerHTML = ("~ " + author);
         } else{
           document.querySelector("#author").innerHTML = ("~ " + 'Unknown');
         }
+
       },
-      error: function(err) { return (err); }
+      error: function(err) { alert(err); }
     });
  }
 
