@@ -25,7 +25,7 @@ var result = function(){
     });
  }
 
- result();
+result();
 
 $(document).ready(function(){
   $('#click').on('click', function(e){
